@@ -27,11 +27,12 @@ staging:
   
 production:
   adapter: mysql
-  database: opensprints_stats_development
-  username: root
-  password: password
-  host: localhost
-  encoding: utf8
+  host: mysql.ternimal.com
+  username: efarrar
+  password: <%= File.read(PASSWORD_FILE).chomp if File.readable? PASSWORD_FILE %>
+  database: opensprints_stats_production
+
+
 
 cucumber:
   <<: *TEST

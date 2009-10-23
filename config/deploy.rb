@@ -1,5 +1,5 @@
 set :application, "opensprints stats"
-set :repository,  "git://github.com/evanfarrar/opensprints.org.git"
+set :repository,  "git://github.com/evanfarrar/stats.opensprints.org.git"
 
 set :branch, "master"
 set :scm_verbose, true 
@@ -18,6 +18,6 @@ namespace :deploy do
   task(:start) { }
   task(:stop) { }
   task :restart, :roles => :app, :except => { :no_release => true } do
-    run "touch stats.opensprints.org/#{File.join(current_path,'tmp','restart.txt')}"
+    run "touch #{File.join(current_path,'tmp','restart.txt')}"
   end
 end
