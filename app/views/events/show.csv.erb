@@ -1,0 +1,17 @@
+"<%= @event.name %>"
+"<%= @user.group_name %>"
+
+Overall
+"Rank","Name","Best Time"
+<% @event.tournament_participations.sort_by{|tp|[(tp.best_time||Infinity)]}.each do |racer| %>
+"<%= racer.rank %>","<%= racer.racer.name %>","<%= racer.best_time %>"
+<% end %>
+<% Category.all.each do |category| %>
+<% racers = TournamentParticipation.filter(:tournament_id => @event.pk).all.select{|tp|tp.racer.categorizations.map(&:category).include? category} %>
+<% if racers.any? %>
+"<%= category.name %>"
+<% racers.sort_by{|tp|[(tp.best_time||Infinity)]}.each do |racer| %>
+"<%= racer.rank %>","<%= racer.racer.name %>","<%= racer.best_time %>"
+<% end %>
+<% end %>
+<% end %>
