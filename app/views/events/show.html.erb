@@ -48,5 +48,5 @@
   <% end %>
 <% end %>
 <div class="csv">
-  <%= link_to("Download this as a CSV",data_upload_event_path(@data_upload,@event.pk)) %>
+  <%= link_to("Download this as a CSV",data_upload_event_path(@data_upload,@event.pk, :format => 'csv')) %>
 </div>
