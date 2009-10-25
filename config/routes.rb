@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :profiles
+
   map.resources :data_uploads do |data_uploads|
     data_uploads.resources :events
   end

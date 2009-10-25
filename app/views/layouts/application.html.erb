@@ -51,7 +51,7 @@
         <ul class="second_level_nav">
         <% if signed_in? %>
           <li>
-            <%=link_to("My Events",group_path(current_user.group_name.parameterize)) %>
+            <%=link_to("My Events",group_path(current_user.group_name_for_url)) %>
           </li>
           <li>
             <%=link_to("My Data",data_uploads_path(:user => current_user)) %>
