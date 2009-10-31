@@ -5,6 +5,8 @@ class UserTest < ActiveSupport::TestCase
   context "User" do
     should_have_many :config_files
     should_have_many :data_uploads
+    should_have_attached_file :profile_picture
+
     should "have a name for their group" do
       u = User.new
       u.group_name = "Salt City Sprints"
@@ -13,6 +15,12 @@ class UserTest < ActiveSupport::TestCase
 
     should_validate_presence_of :group_name
     should_allow_mass_assignment_of :group_name
+    should_allow_mass_assignment_of :upcoming_events
+    should_allow_mass_assignment_of :country
+    should_allow_mass_assignment_of :city_state
+    should_allow_mass_assignment_of :website
+    should_allow_mass_assignment_of :description
+    should_allow_mass_assignment_of :profile_picture
 
     should "parameterize group name before save" do
       u = Factory.build(:user)

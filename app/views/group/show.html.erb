@@ -1,3 +1,27 @@
+<h2><%= @user.group_name %></h2>
+<% if @user.profile_picture.exists? %>
+  <%= image_tag @user.profile_picture.url(:medium) %>
+<% end %>
+<dl>
+  <% unless @user.description.blank? %>
+    <dt>Description:</dt>
+    <dd><%= @user.description %></dd>
+  <% end %>
+  <% unless @user.city_state.blank?&&@user.country.blank? %>
+    <dt>Location:</dt>
+    <dd><%= [@user.city_state,@user.country].reject(&:blank?).join(", ") %></dd>
+  <% end %>
+  <% unless @user.website.blank? %>
+    <dt>Website:</dt>
+    <dd><%= link_to(@user.website,@user.website) %></dd>
+  <% end %>
+  <% unless @user.upcoming_events.blank? %>
+    <dt>Upcoming Events:</dt>
+    <dd><%= @user.upcoming_events %></dd>
+  <% end %>
+</dl>
+
+
 <% if @user.data_uploads.any? %>
   <h2>Past Events by <%= @user.group_name %></h2>
   <% @user.tournaments.reverse.each do |tournament| %>

@@ -51,6 +51,9 @@
         <ul class="second_level_nav">
         <% if signed_in? %>
           <li>
+            <%=link_to("Edit Profile",edit_profile_path(current_user.id)) %>
+          </li>
+          <li>
             <%=link_to("My Events",group_path(current_user.group_name_for_url)) %>
           </li>
           <li>

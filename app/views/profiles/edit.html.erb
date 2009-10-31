@@ -1,0 +1,24 @@
+<h2>Edit profile</h2>
+
+<% semantic_form_for(@user,:url => profile_path(@user.id), :html => {:multipart => true}) do |form| %>
+  <%= form.error_messages %>
+  <% form.inputs do %>
+    <%= form.input :group_name %>
+    <%= form.input :city_state %>
+    <%= form.input :country %>
+    <%= form.input :website %>
+    <%= form.label :profile_picture %>
+    <% if @user.profile_picture.exists? %>
+      <%= image_tag @user.profile_picture.url(:small) %>
+      <%= form.label :profile_picture, "Upload a different picture" %>
+    <% end %>
+    <%= form.file_field :profile_picture %>
+    <%= form.input :description, :input_html => {:rows => 5, :style => "height:150px"} %>
+    <%= form.input :upcoming_events, :input_html => {:rows => 5, :style => "height:150px"} %>
+  <% end %>
+  <% form.buttons do %>
+    <%= form.commit_button "Update" %>
+  <% end %>
+<% end %>
+
+
