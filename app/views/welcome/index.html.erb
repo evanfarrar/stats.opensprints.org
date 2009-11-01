@@ -5,7 +5,12 @@ Welcome to the opensprints stats and storage page. This is a place for opensprin
 
 <p>
   <ul><% User.all.each do |user| %>
-    <li><%= link_to(user.group_name,"group/#{user.group_name_for_url}") %></li>
+    <li>
+      <%= link_to(user.group_name,"group/#{user.group_name_for_url}") %>
+      <% unless user.city_state.blank?&&user.country.blank? %>
+       (<%= [user.city_state,user.country].reject(&:blank?).join(", ") %>)
+      <% end %>
+    </li>
   <% end %></ul>
 </p>
 <% unless signed_in? %>
