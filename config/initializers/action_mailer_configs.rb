@@ -1,4 +1,4 @@
-MAILSERVER_FILE = File.join(RAILS_ROOT, '..', '..', 'shared', 'config', 'mailserverpassword') %>
+MAILSERVER_FILE = File.join(RAILS_ROOT, '..', '..', 'shared', 'config', 'mailserverpassword')
 
 ActionMailer::Base.smtp_settings = {
   :address => 'mail.opensprints.com',
