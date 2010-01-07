@@ -5,7 +5,7 @@
       <tr>
         <td>
           <%= config_file.updated_at.to_s(:long) %>
-          <% unless @user %>
+          <% if !@user && config_file.user %>
             <%= " from "+config_file.user.group_name %>
           <% end %>
         </td>
